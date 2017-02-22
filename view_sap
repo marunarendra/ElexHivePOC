@@ -1,0 +1,28 @@
+// creating staging view 'view_sap'
+
+create view view_sap as
+select DOC_NUMBER as ORD_NO,
+createdon as ORD_DTE,
+
+case when salesorg = "CA10" then "241" else "201" end as COUNTRY_CODE,
+
+case when zz7altkn = "" then substr(zshpaltkn,1,5) 
+when ZSHPALTKN = "" then substr(ZKUNZ7,1,5) 
+when ZKUNZ7 = "" then substr(ZKUNZ8,1,5)
+else substr(ZZ7ALTKN,1,5)
+end as CUST_ID,
+
+case when zz7altkn = "" then substr(zshpaltkn,6,8) 
+when ZSHPALTKN = "" then substr(ZKUNZ7,6,8) 
+when ZKUNZ7 = "" then substr(ZKUNZ8,6,8)
+else substr(ZZ7ALTKN,6,8)
+end as CUST_SUFFIX,
+
+DOC_TYPE as ORD_TYPE_CODE,
+REQ_DATE as REQ_SHIP_DTE,
+"" as SHIP_CMPL_IND,
+SHIP_TO as SAP_GE_CUSTOMER_NO,
+ZKUNZ7 as SAP_CUSTOMER_NO,
+DOC_TYPE as SAP_ORDER_TYPE,
+"" as STAT_CODE
+from sap
