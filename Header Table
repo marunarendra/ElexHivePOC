@@ -1,0 +1,17 @@
+// Header table creatd for final output
+create table order_header_all
+(ORD_NO string,
+CUST_ID string,
+CUST_SUFFIX string,
+STAT_CODE string,
+TOT_AMT string,
+ORD_DTE string,
+COUNTRY_CODE int,
+ORD_TYPE_CODE string,
+REQ_SHIP_DTE string,
+SHIP_CMPL_IND string,
+SAP_GE_CUSTOMER_NO string,
+SAP_CUSTOMER_NO string,
+SAP_ORDER_TYPE string
+)
+row format delimited fields terminated by ',' 
