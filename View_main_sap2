@@ -1,0 +1,33 @@
+//Creating view to merge mainframe table and staging view 'view_sap2' of sap for mainframes2 table
+creat view view_main_sap2 as
+select 
+ORD_NO,
+ORD_DTE,
+COUNTRY_CODE,
+CUST_ID,
+CUST_SUFFIX,
+ORD_TYPE_CODE,
+REQ_SHIP_DTE,
+SHIP_CMPL_IND,
+SAP_GE_CUSTOMER_NO,
+SAP_CUSTOMER_NO,
+SAP_ORDER_TYPE,
+STAT_CODE
+from view_sap2
+
+union
+
+select 
+ORD_NO,
+ORD_DTE,
+COUNTRY_CODE,
+CUST_ID,
+CUST_SUFFIX,
+ORD_TYPE_CODE,
+REQ_SHIP_DTE,
+SHIP_CMPL_IND,
+"" as SAP_GE_CUSTOMER_NO,
+"" as SAP_CUSTOMER_NO,
+"" as SAP_ORDER_TYPE,
+STAT_CODE
+from mainframes2
